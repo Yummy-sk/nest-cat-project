@@ -10,6 +10,7 @@ import { CatsModule } from './cats/cats.module';
 import { LoggerMiddleware } from './logger.middleware';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import * as mongoose from 'mongoose';
 
 @Module({
   imports: [
@@ -25,5 +26,6 @@ export class AppModule implements NestModule {
     consumer
       .apply(LoggerMiddleware)
       .forRoutes({ path: 'cats', method: RequestMethod.GET });
+    mongoose.set('debug', true);
   }
 }
