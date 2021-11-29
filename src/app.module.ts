@@ -22,10 +22,11 @@ import * as mongoose from 'mongoose';
   providers: [AppService],
 })
 export class AppModule implements NestModule {
+  private isDev: boolean = process.env.MODE === 'dev' ? true : false;
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(LoggerMiddleware)
       .forRoutes({ path: 'cats', method: RequestMethod.GET });
-    mongoose.set('debug', true);
+    mongoose.set('debug', this.isDev);
   }
 }
