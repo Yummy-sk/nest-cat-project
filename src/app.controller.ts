@@ -4,10 +4,7 @@ import { CatsService } from './cats/cats.service';
 
 @Controller()
 export class AppController {
-  constructor(
-    private readonly appService: AppService,
-    private readonly catsService: CatsService,
-  ) {}
+  constructor(private readonly appService: AppService) {}
 
   @Get()
   getHello(): string {
@@ -16,6 +13,6 @@ export class AppController {
 
   @Get('hihi')
   sayHello(): string {
-    return this.catsService.sayHello();
+    return 'hello';
   }
 }
