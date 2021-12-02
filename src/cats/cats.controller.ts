@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Delete,
   Get,
@@ -13,6 +14,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { CatsService } from './cats.service';
+import { CatRequestDto } from './dto/cats.request.dto';
 
 @Controller('cats')
 export class CatsController {
@@ -24,7 +26,7 @@ export class CatsController {
   }
 
   @Post()
-  async signUp() {
+  async signUp(@Body() body: CatRequestDto) {
     return 'signup';
   }
 
