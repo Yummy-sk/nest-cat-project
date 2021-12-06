@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { CatsService } from './cats.service';
+import { ReadOnlyCatDto } from './dto/cats.dto';
 import { CatRequestDto } from './dto/cats.request.dto';
 
 @Controller('cats')
@@ -20,6 +21,7 @@ export class CatsController {
   @ApiResponse({
     status: 200,
     description: '성공!',
+    type: ReadOnlyCatDto,
   })
   @ApiOperation({ summary: '회원가입' })
   @Post()
