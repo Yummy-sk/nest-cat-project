@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { ApiOperation } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { CatsService } from './cats.service';
 import { CatRequestDto } from './dto/cats.request.dto';
 
@@ -13,6 +13,14 @@ export class CatsController {
     return 'current cat';
   }
 
+  @ApiResponse({
+    status: 500,
+    description: 'Server Error..',
+  })
+  @ApiResponse({
+    status: 200,
+    description: '성공!',
+  })
   @ApiOperation({ summary: '회원가입' })
   @Post()
   async signUp(@Body() body: CatRequestDto) {
